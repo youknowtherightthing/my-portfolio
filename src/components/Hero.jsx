@@ -33,7 +33,7 @@ function Hero() {
                     <a href="#contact" className="border border-blue-600 text-blue-400 hover:bg-blue-900 font-semibold px-6 py-3 rounded-lg transition">
                         Contact Me
                     </a>
-                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition">
+                    <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition">
                         Download CV
                     </a>
                 </div>
