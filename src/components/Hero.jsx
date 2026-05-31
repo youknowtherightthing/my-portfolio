@@ -30,17 +30,14 @@ function Hero() {
                     <a href="#projects" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
                         View Projects
                     </a>
-
-
-                </div>
-                <div className="flex flex-wrap gap-4">
-                    <a href="#projects" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
-                        View Projects
-                    </a>
                     <a href="#contact" className="border border-blue-600 text-blue-400 hover:bg-blue-900 font-semibold px-6 py-3 rounded-lg transition">
                         Contact Me
                     </a>
+                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition">
+                        Download CV
+                    </a>
                 </div>
+
 
             </div>
         </section>
