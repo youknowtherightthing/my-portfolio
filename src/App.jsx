@@ -9,6 +9,7 @@ import P1 from './pages/P1'
 import P2 from './pages/P2'
 import P3 from './pages/P3'
 import P4 from './pages/P4'
+import Storage from './pages/Storage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="/p2" element={<P2 />} />
       <Route path="/p3" element={<P3 />} />
       <Route path="/p4" element={<P4 />} />
+      <Route path="/storage" element={<Storage />} />
     </Routes>
   )
 }
