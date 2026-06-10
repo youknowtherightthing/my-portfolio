@@ -12,9 +12,11 @@ function Hero() {
             </h1>
 
             <p className="text-gray-400 text-lg md:text-xl font-mono mb-8">
-                Cybersecurity Enthusiast · SOC L1 Aspirant · B.Tech CE
+                <a href="/storage" className="hover:text-blue-400 transition cursor-pointer">
+                    Cybersecurity Enthusiast
+                </a>
+                {" · "}SOC L1 Aspirant · B.Tech CSE
             </p>
-
             <div className="border-t border-gray-800 mb-8 w-24"></div>
 
             <div className="flex flex-col gap-3 mb-10 text-sm text-gray-400">
@@ -32,9 +34,7 @@ function Hero() {
                 <a href="#contact" className="border border-blue-600 text-blue-400 hover:bg-blue-900 font-semibold px-6 py-3 rounded-lg transition">
                     Contact Me
                 </a>
-                <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-gray-200 font-semibold px-6 py-3 rounded-lg transition">
-                    Download CV
-                </a>
+
             </div>
 
 

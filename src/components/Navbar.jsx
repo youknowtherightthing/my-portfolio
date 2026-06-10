@@ -18,7 +18,6 @@ function Navbar() {
                     <a href="#projects" className="text-gray-400 hover:text-white text-sm font-mono transition">Projects</a>
                     <a href="#contact" className="text-gray-400 hover:text-white text-sm font-mono transition">Contact</a>
                     <a href="/CV.pdf" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">
-                        <a href="/storage" className="text-gray-400 hover:text-white text-sm font-mono transition">Storage</a>
                         Download CV
                     </a>
                 </div>
