@@ -162,6 +162,64 @@ function Storage() {
         )
     }
 
+    // ✅ NEW: Folder password prompt
+    if (pendingFolder) {
+        return (
+            <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
+                <div className="max-w-sm w-full border border-gray-800 rounded-2xl p-8">
+                    <p className="text-blue-400 text-sm font-mono mb-3 tracking-widest">Protected Folder</p>
+                    <h1 className="text-3xl font-extrabold mb-2">
+                        <span className="text-blue-500">{pendingFolder.label}</span>
+                    </h1>
+                    <p className="text-gray-600 text-sm font-mono mb-8">This folder is password protected</p>
+                    <input
+                        type="password"
+                        value={folderInput}
+                        onChange={(e) => setFolderInput(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                if (folderInput === pendingFolder.password) {
+                                    setFolderAuth({ ...folderAuth, [pendingFolder.id]: true })
+                                    setActiveFolder(pendingFolder.id)
+                                    setPendingFolder(null)
+                                    setFolderInput('')
+                                    setFolderError('')
+                                } else {
+                                    setFolderError('Wrong password. Try again!')
+                                }
+                            }
+                        }}
+                        placeholder="Enter password..."
+                        className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-mono text-sm mb-3 focus:outline-none focus:border-blue-600"
+                    />
+                    {folderError && <p className="text-red-500 text-xs font-mono mb-3">{folderError}</p>}
+                    <button
+                        onClick={() => {
+                            if (folderInput === pendingFolder.password) {
+                                setFolderAuth({ ...folderAuth, [pendingFolder.id]: true })
+                                setActiveFolder(pendingFolder.id)
+                                setPendingFolder(null)
+                                setFolderInput('')
+                                setFolderError('')
+                            } else {
+                                setFolderError('Wrong password. Try again!')
+                            }
+                        }}
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+                    >
+                        Unlock Folder
+                    </button>
+                    <button
+                        onClick={() => { setPendingFolder(null); setFolderInput(''); setFolderError('') }}
+                        className="w-full mt-3 text-gray-600 hover:text-gray-400 text-sm font-mono transition"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        )
+    }
+
     if (activeFolder) {
         const folderFiles = files[activeFolder] || []
         const folderLabel = folders.find(f => f.id === activeFolder)?.label
@@ -249,7 +307,14 @@ function Storage() {
                     {folders.map((folder) => (
                         <div
                             key={folder.id}
-                            onClick={() => setActiveFolder(folder.id)}
+                            onClick={() => {
+                                // ✅ NEW: Check for folder-level password
+                                if (folder.password && !folderAuth[folder.id]) {
+                                    setPendingFolder(folder)
+                                } else {
+                                    setActiveFolder(folder.id)
+                                }
+                            }}
                             className="border border-gray-800 rounded-2xl p-6 hover:border-blue-700 transition cursor-pointer"
                         >
                             <div className="w-14 h-14 rounded-xl bg-blue-900 border border-blue-700 flex items-center justify-center text-blue-300 font-mono text-xs font-bold mb-4">
@@ -258,6 +323,9 @@ function Storage() {
                             <p className="text-white font-bold text-lg mb-1">{folder.label}</p>
                             <p className="text-gray-600 text-xs font-mono">
                                 {(files[folder.id] || []).length} files
+                                {folder.password && !folderAuth[folder.id] && (
+                                    <span className="ml-2 text-blue-600">🔒</span>
+                                )}
                             </p>
                         </div>
                     ))}
