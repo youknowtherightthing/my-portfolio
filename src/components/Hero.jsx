@@ -69,6 +69,7 @@ function NoteSection() {
         </div>
     )
 } function Hero() {
+    const [showNotes, setShowNotes] = useState(false)
     return (
         <section className="bg-black text-white min-h-screen flex items-center px-6 pt-24">   <div className="max-w-4xl mx-auto w-full">
 
@@ -85,8 +86,17 @@ function NoteSection() {
                 <a href="/storage" className="hover:text-blue-400 transition cursor-pointer">
                     Cybersecurity Enthusiast
                 </a>
-                {" · "}SOC L1 Aspirant · B.Tech CSE
+                {" · "}
+                <span
+                    onClick={() => setShowNotes(!showNotes)}
+                    className="hover:text-blue-400 transition cursor-pointer"
+                >
+                    SOC L1 Aspirant
+                </span>
+                {" · "}B.Tech CSE
             </p>
+
+            {showNotes && }
             <div className="border-t border-gray-800 mb-8 w-24"></div>
 
             <div className="mb-8 max-w-xl">
