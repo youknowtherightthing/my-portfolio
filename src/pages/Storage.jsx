@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const CLOUD_NAME = 'dugzfzbkv'
 const UPLOAD_PRESET = 'portfolio_storage'
-const PASSWORD = 'dharmesh@123'
+const PASSWORD = '4823'
 
 const FOLDERS = [
     { id: 'documents', label: 'Documents', icon: 'DOC', password: 'dharmesh@123' },
