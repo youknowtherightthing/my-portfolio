@@ -250,6 +250,7 @@ function Storage() {
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <a href={file.url} target="_blank" rel="noopener noreferrer" className="border border-blue-700 text-blue-400 hover:bg-blue-900 text-xs font-mono px-3 py-2 rounded-lg transition">Open</a>
+                                    <a href={file.url} download={file.name} className="border border-green-700 text-green-400 hover:bg-green-950 text-xs font-mono px-3 py-2 rounded-lg transition">Download</a>
                                     <button onClick={() => navigator.clipboard.writeText(file.url)} className="border border-gray-700 text-gray-400 hover:bg-gray-800 text-xs font-mono px-3 py-2 rounded-lg transition">Copy Link</button>
                                     <button onClick={() => handleDelete(file.id)} className="border border-red-900 text-red-500 hover:bg-red-950 text-xs font-mono px-3 py-2 rounded-lg transition">Remove</button>
                                 </div>
