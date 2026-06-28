@@ -103,7 +103,9 @@ function Storage() {
             setProgress(0)
         }
         xhr.onerror = () => { setUploading(false) }
-        xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`)
+        const fileExt = file.name.split('.').pop().toLowerCase()
+        const uploadType = ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExt) ? 'image' : ['mp4', 'mov', 'avi'].includes(fileExt) ? 'video' : 'raw'
+        xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${uploadType}/upload`)
         xhr.send(formData)
     }
 
@@ -250,15 +252,19 @@ function Storage() {
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <a href={file.url} target="_blank" rel="noopener noreferrer" className="border border-blue-700 text-blue-400 hover:bg-blue-900 text-xs font-mono px-3 py-2 rounded-lg transition">Open</a>
-                                    <a href={file.url} download={file.name} className="border border-green-700 text-green-400 hover:bg-green-950 text-xs font-mono px-3 py-2 rounded-lg transition">Download</a>
-                                    <button onClick={() => navigator.clipboard.writeText(file.url)} className="border border-gray-700 text-gray-400 hover:bg-gray-800 text-xs font-mono px-3 py-2 rounded-lg transition">Copy Link</button>
-                                    <button onClick={() => handleDelete(file.id)} className="border border-red-900 text-red-500 hover:bg-red-950 text-xs font-mono px-3 py-2 rounded-lg transition">Remove</button>
-                                </div>
+                                    href={file.url.replace('/upload/', '/upload/fl_attachment/')}
+                                    download={file.name}
+                                    className="border border-green-700 text-green-400 hover:bg-green-950 text-xs font-mono px-3 py-2 rounded-lg transition"
+>
+                                    Download
+                                </a> <button onClick={() => navigator.clipboard.writeText(file.url)} className="border border-gray-700 text-gray-400 hover:bg-gray-800 text-xs font-mono px-3 py-2 rounded-lg transition">Copy Link</button>
+                                <button onClick={() => handleDelete(file.id)} className="border border-red-900 text-red-500 hover:bg-red-950 text-xs font-mono px-3 py-2 rounded-lg transition">Remove</button>
+                            </div>
                             </div>
                         ))}
-                    </div>
                 </div>
             </div>
+            </div >
         )
     }
 
